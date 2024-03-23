@@ -1,13 +1,12 @@
 package heaps
 
-// maybe try generics?
-func Permutations(slice []int) [][]int {
-	result := [][]int{}
-	var generate func(int, []int)
+func Permutations[E any](slice []E) [][]E {
+	result := [][]E{}
+	var generate func(int, []E)
 
-	generate = func(k int, slice []int) {
+	generate = func(k int, slice []E) {
 		if k == 1 {
-			tmp := make([]int, len(slice))
+			tmp := make([]E, len(slice))
 			copy(tmp, slice)
 			result = append(result, tmp)
 		} else {
@@ -27,7 +26,7 @@ func Permutations(slice []int) [][]int {
 	return result
 }
 
-func swap(n, m int, s []int) {
+func swap[E any](n, m int, s []E) {
 	el := s[n]
 	s[n] = s[m]
 	s[m] = el
